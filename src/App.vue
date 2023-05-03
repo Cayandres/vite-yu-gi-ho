@@ -1,15 +1,27 @@
 
 <script>
+import Header from './components/Header.vue'
+import Main from './components/Main.vue'
 export default {
-  name: 'App'
+  name: 'App',
+  components:{
+    Header,
+    Main
+  }
 }
 </script>
 
 <template>
-  <h1>prova</h1>
+  
+  <Header
+  title="Yu-GI-Ho Api"/>
+
+  <Main/>
+
 </template>
 
 <style lang="scss">
-@use './scss/main.scss'
+@use './scss/main.scss';
+
 
 </style>
