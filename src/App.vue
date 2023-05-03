@@ -1,13 +1,36 @@
-
 <script>
+import axios from 'axios'
 import Header from './components/Header.vue'
 import Main from './components/Main.vue'
+import { store } from './data/store'
 export default {
   name: 'App',
+  data(){
+    return{
+      store
+    }
+  },
+
   components:{
     Header,
     Main
+  },
+  methods:{
+    getApi(){
+      axios.get(store.apiUrl)
+        .then(result => {
+          console.log(result.data);
+          store.characterList = result.data.data
+          console.log(store.characterList);
+        })
+    }
+  },
+
+  mounted(){
+    this.getApi()
+
   }
+
 }
 </script>
 

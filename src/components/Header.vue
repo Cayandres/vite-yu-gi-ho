@@ -19,7 +19,7 @@ export default {
 @use '../scss/partials/vars' as*;
 .container-100{
   display: flex;
- align-items:  center;
+  align-items:  center;
   width: 100%;
   height: 80px;
   background-color: $secondary-color;
