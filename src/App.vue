@@ -1,6 +1,7 @@
 <script>
 import axios from 'axios'
 import Header from './components/Header.vue'
+import Loader from './components/partials/Loader.vue'
 import Main from './components/Main.vue'
 import { store } from './data/store'
 export default {
@@ -13,15 +14,16 @@ export default {
 
   components:{
     Header,
-    Main
+    Main,
+    Loader
   },
   methods:{
     getApi(){
+      store.isLoading = true;
       axios.get(store.apiUrl)
         .then(result => {
-          console.log(result.data);
-          store.characterList = result.data.data
-          console.log(store.characterList);
+          store.characterList = result.data.data;
+          store.isLoading = false;
         })
     }
   },
@@ -35,11 +37,16 @@ export default {
 </script>
 
 <template>
-  
-  <Header
+
+  <Loader v-if="store.isLoading"/>
+ 
+  <div v-else>
+   <Header
   title="Yu-GI-Ho Api"/>
 
-  <Main/>
+  <Main/>  
+  </div>
+ 
 
 </template>
 

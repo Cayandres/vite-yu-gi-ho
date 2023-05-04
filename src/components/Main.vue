@@ -25,7 +25,7 @@
       :key="card.id"
       :img="card.card_images[0].image_url"
       :name="card.name"
-      :type="card.archetype"/>
+      :type="card.archetype || card.type"/>
     </div>
   </div>
 </template>
