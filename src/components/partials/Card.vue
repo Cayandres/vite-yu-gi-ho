@@ -13,7 +13,7 @@ export default {
 <template>
       <div class="card">
         <img :src="img" :alt="name">
-        <span>{{ name }}</span>
+        <span class="title">{{ name }}</span>
         <span>{{ type }}</span>
       </div>  
   
@@ -26,6 +26,12 @@ export default {
       background-color: $primary-color;
       width: 18%;
       margin-bottom: 40px;
+       .title{
+        padding: 10px;
+        font-weight: 700;
+        color: white;
+        height: 60px;
+      }
       img{
         width: 100%;
       }

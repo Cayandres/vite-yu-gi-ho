@@ -1,10 +1,12 @@
 <script>
   import Card from './partials/Card.vue'
+  import HeaderCounter from './partials/HeaderCounter.vue'
   import { store } from '../data/store'
   export default {
     name: 'Main',
     components:{
-      Card
+      Card,
+      HeaderCounter
     },
     data(){
       return{
@@ -17,12 +19,13 @@
 
 <template>
   <div class="container">
+    <HeaderCounter />
     <div class="cards-wrapper">
       <Card v-for="card in store.characterList" 
       :key="card.id"
       :img="card.card_images[0].image_url"
       :name="card.name"
-      :type="card.type"/>
+      :type="card.archetype"/>
     </div>
   </div>
 </template>
