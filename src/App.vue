@@ -20,33 +20,47 @@ export default {
   methods:{
     getApi(){
       store.isLoading = true;
-      axios.get(store.apiUrl)
+      axios.get(store.apiUrl, {
+        params : {
+          num: store.cardNumber,
+          offset: store.cardOffset,
+          type: store.searchType
+        }
+      })
         .then(result => {
           store.characterList = result.data.data;
           store.isLoading = false;
         })
+    },
+
+    getTypes() {
+      axios.get(store.apiUrl)
+      .then(result => {
+        result.data.data.forEach( card => {
+          if(!store.listType.includes(card.type)) store.listType.push(card.type)
+        })
+      })
     }
   },
 
   mounted(){
     this.getApi()
-
+    this.getTypes()
   }
 
 }
 </script>
 
 <template>
-
-  <Loader v-if="store.isLoading"/>
- 
-  <div v-else>
-   <Header
+  <Header
   title="Yu-GI-Ho Api"/>
 
-  <Main/>  
-  </div>
- 
+  <Loader v-if="store.isLoading"/>
+  
+<div v-else>
+  <Main @getApi="getApi"/>  
+</div>
+
 
 </template>
 
