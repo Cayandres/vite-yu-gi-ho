@@ -1,16 +1,25 @@
 <script>
   import Card from './partials/Card.vue'
   import HeaderCounter from './partials/HeaderCounter.vue'
+  import Select from './partials/Select.vue'
   import { store } from '../data/store'
   export default {
     name: 'Main',
     components:{
       Card,
-      HeaderCounter
+      HeaderCounter,
+      Select
     },
+
     data(){
       return{
         store
+      }
+    },
+    methods:{
+      filter(){
+        store.characterList = [];
+        this.$emit('getApi')
       }
     }
   }
@@ -19,6 +28,7 @@
 
 <template>
   <div class="container">
+    <Select @filter="filter" />
     <HeaderCounter />
     <div class="cards-wrapper">
       <Card v-for="card in store.characterList" 

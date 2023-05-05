@@ -19,11 +19,16 @@ export default {
 </template>
 
 <style lang="scss" scoped>
+
+@use '../../scss/partials/vars' as*;
 .counter{
+  margin: 20px auto;
   text-align: center;
-  background-color: black;
-  padding: 30px;
-  margin-bottom: 20px;
-  color: white;
+  background-color: $primary-color;
+  border-radius: 10px;
+  padding: 10px;
+  font-weight: 600;
+  color: black;
+  width: 250px;
  }
 </style>
